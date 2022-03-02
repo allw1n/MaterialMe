@@ -41,6 +41,7 @@ id subTitleDetail
 id title
 id titleDetail
 id toolbar
+integer grid_column_count
 layout activity_detail
 layout activity_main
 layout list_item

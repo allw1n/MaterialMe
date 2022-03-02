@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         snackbar = Snackbar.make(findViewById(R.id.parent_layout),
                 R.string.layout_unchanged, Snackbar.LENGTH_SHORT);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(
+                        this, getResources().getInteger(R.integer.grid_column_count)));
         mSportsData = new ArrayList<>();
 
         mAdapter = new SportsAdapter(this, mSportsData);

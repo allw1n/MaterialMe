@@ -51,6 +51,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_elevation">10dp</dimen>
     <dimen name="layout_margin">8dp</dimen>
+    <integer name="grid_column_count">1</integer>
     <string name="action_reset">Reset</string>
     <string name="app_name">Material Me!</string>
     <string name="dismiss">Dismiss</string>
