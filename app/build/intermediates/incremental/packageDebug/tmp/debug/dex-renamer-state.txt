@@ -1,4 +1,4 @@
-#Wed Mar 02 12:00:42 IST 2022
+#Wed Mar 02 12:22:41 IST 2022
 base.2=D\:\\Sample\\android-fundamentals-starter-apps-v2-master\\MaterialMe-Starter\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
 path.2=12/classes.dex
 base.1=D\:\\Sample\\android-fundamentals-starter-apps-v2-master\\MaterialMe-Starter\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
