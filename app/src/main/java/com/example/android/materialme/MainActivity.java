@@ -3,7 +3,6 @@ package com.example.android.materialme;
 import android.annotation.SuppressLint;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -26,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Sport> mSportsData;
     private SportsAdapter mAdapter;
-    private boolean RESET = false;
+    private boolean RESET = false, ROTATE = false;
 
     private ExtendedFloatingActionButton fabRestore;
 
@@ -34,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean("reset_state", RESET);
+        outState.putBoolean("rotate_state", true);
+        if (RESET) {
+            outState.putParcelableArrayList("sport_data", mSportsData);
+        }
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,15 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new SportsAdapter(this, mSportsData);
         mRecyclerView.setAdapter(mAdapter);
 
-        initializeData();
+        //Restore Saved Instance
+        if (savedInstanceState != null) {
+            RESET = savedInstanceState.getBoolean("reset_state");
+            ROTATE = savedInstanceState.getBoolean("rotate_state");
+            if (RESET && ROTATE) {
+                mSportsData.addAll(savedInstanceState.getParcelableArrayList("sport_data"));
+                mAdapter.notifyItemRangeInserted(0, mSportsData.size());
+            } else if (ROTATE) initializeData();
+        } else initializeData();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper
                 .SimpleCallback(ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
