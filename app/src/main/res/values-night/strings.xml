@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_reset">Reset</string>
+    <string name="sport_banner">Sport Banner</string>
+    <string name="restore_cards">Restore Cards</string>
+    <string name="layout_unchanged">Default cards layout hasn\'t changed</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="restore">Restore</string>
+</resources>
